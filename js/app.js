@@ -6,5 +6,10 @@ const allPlayers = () => {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => showPlayersDetails(data.player));
+}
+
+const showPlayersDetails = (player) =>{
+    
+    console.log(player);
 }
