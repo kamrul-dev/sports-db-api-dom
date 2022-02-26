@@ -9,7 +9,26 @@ const allPlayers = () => {
         .then(data => showPlayersDetails(data.player));
 }
 
-const showPlayersDetails = (player) =>{
-    
-    console.log(player);
+// display players on UI
+const showPlayersDetails = (players) => {
+    const parent = document.getElementById('player-container');
+    for (const player of players) {    
+        const div = document.createElement('div');
+        div.innerHTML = `
+        <div class="card">
+            <div class="pro-pic">
+                <img class="img-fluid" src="${player.strThumb}" alt="">
+            </div>
+                <h2>${player.strPlayer}</h2>
+                <h2>${player.strNationality}</h2>
+                <p></p>
+            <div class="all-button">
+                <button class="btn btn-danger">Delete</button>
+                <button onclick="details()" class="btn btn-success">Details</button>
+            </div>
+        </div>
+        `;
+        parent.appendChild(div);
+        console.log(player)
+    }
 }
