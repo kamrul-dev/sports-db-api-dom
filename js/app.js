@@ -24,11 +24,19 @@ const showPlayersDetails = (players) => {
                 <p></p>
             <div class="all-button">
                 <button class="btn btn-danger">Delete</button>
-                <button onclick="details()" class="btn btn-success">Details</button>
+                <button onclick="details('${player.idPlayer}')" class="btn btn-success">Details</button>
             </div>
         </div>
         `;
         parent.appendChild(div);
         console.log(player)
     }
+}
+
+const details = info =>{
+    const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${info}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data));
+    console.log(info);
 }
