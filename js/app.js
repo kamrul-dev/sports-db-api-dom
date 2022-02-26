@@ -15,7 +15,7 @@ const showPlayersDetails = (players) => {
     for (const player of players) {
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="card">
+        <div class="card text-center p-4 m-4">
             <div class="pro-pic">
                 <img class="img-fluid" src="${player.strThumb}" alt="">
             </div>
@@ -33,7 +33,7 @@ const showPlayersDetails = (players) => {
     }
 }
 
-//
+// load player info
 const details = (id) => {
     const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${id}`;
     fetch(url)
@@ -45,7 +45,7 @@ const details = (id) => {
 // see player info
 const setDetails = (info) =>{
     document.getElementById('details-container').innerHTML = `
-        <div>
+        <div class="text-center p-4 m-4">
             <img src ="${info.strThumb}">
             <h1>Name:${info.strPlayer} <h1>
         </div>
