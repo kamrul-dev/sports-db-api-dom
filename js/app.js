@@ -1,6 +1,7 @@
 
 const allPlayers = () => {
     document.getElementById('player-container').innerHTML = '';
+    document.getElementById('spinner').style.display = 'block';
     const searchValue = document.getElementById('search-box').value;
 
     const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${searchValue}`
@@ -8,10 +9,17 @@ const allPlayers = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => showPlayersDetails(data.player));
+    
 }
 
 // display players on UI
 const showPlayersDetails = (players) => {
+    if(players){
+        document.getElementById('spinner').style.display = 'none';
+    }
+    else{
+        document.getElementById('spinner').style.display = 'block';
+    }
     const parent = document.getElementById('player-container');
     for (const player of players) {
         const div = document.createElement('div');
@@ -36,6 +44,7 @@ const showPlayersDetails = (players) => {
 
 // load player info
 const details = (id) => {
+    document.getElementById('spinner').style.display = 'block';
     const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${id}`;
     fetch(url)
         .then(res => res.json())
@@ -43,12 +52,18 @@ const details = (id) => {
 }
 
 // see player info
-const setDetails = (info) =>{
-    if(info.strGender == "Male"){
+const setDetails = (info) => {
+    if(info){
+        document.getElementById('spinner').style.display = 'none';
+    }
+    else{
+        document.getElementById('spinner').style.display = 'block';
+    }
+    if (info.strGender == "Male") {
         document.getElementById('male').style.display = 'block';
         document.getElementById('female').style.display = 'none';
     }
-    else{
+    else {
         document.getElementById('male').style.display = 'none';
         document.getElementById('female').style.display = 'block';
     }
