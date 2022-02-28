@@ -40,7 +40,6 @@ const details = (id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => setDetails(data.players[0]));
-    console.log(id);
 }
 
 // see player info
@@ -59,4 +58,5 @@ const setDetails = (info) =>{
             <h1>Name:${info.strPlayer} <h1>
         </div>
     `;
+    console.log(info)
 }
