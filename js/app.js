@@ -1,9 +1,10 @@
 
 const allPlayers = () => {
     document.getElementById('player-container').innerHTML = '';
+    document.getElementById('details-container').innerHTML = '';
     document.getElementById('spinner').style.display = 'block';
     const searchValue = document.getElementById('search-box').value;
-
+    
     const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${searchValue}`
 
     fetch(url)

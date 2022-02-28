@@ -7,3 +7,11 @@
 #spinner{
     display: none;
 }
+.image-container{
+    display: flex;
+    justify-content: center;
+}
+.image-container img{
+    width: 400px;
+    border-radius: 10px;
+}
