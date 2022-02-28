@@ -4,23 +4,25 @@ const allPlayers = () => {
     document.getElementById('details-container').innerHTML = '';
     document.getElementById('spinner').style.display = 'block';
     const searchValue = document.getElementById('search-box').value;
-    
+
     const url = `https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${searchValue}`
 
     fetch(url)
         .then(res => res.json())
-        .then(data => showPlayersDetails(data.player));
+        .then(data => {
+            if(data.player == null){
+                document.getElementById('spinner').style.display = 'block';
+            }
+            else{
+                showPlayersDetails(data.player)
+                document.getElementById('spinner').style.display = 'none';
+            }
+        } );
     
 }
 
 // display players on UI
 const showPlayersDetails = (players) => {
-    if(players){
-        document.getElementById('spinner').style.display = 'none';
-    }
-    else{
-        document.getElementById('spinner').style.display = 'block';
-    }
     const parent = document.getElementById('player-container');
     for (const player of players) {
         const div = document.createElement('div');
